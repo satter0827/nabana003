@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <table border="1">
+    <tr>
+      <th>name</th>
+      <th>deadline</th>
+      <th>done</th>
+    </tr>
+    {% for task in object_list %}
+    <tr>
+      <td>{{ task.name }}</td>
+      <td>{{ task.deadline }}</td>
+      <td>{{ task.done }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+ 
+</html>
