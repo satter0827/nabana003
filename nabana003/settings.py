@@ -19,11 +19,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ig_$s*hxy+1k5%1i=x@#$r5&9lzc34jg_2ld6=v(qn-1_nyxf5'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+    SECRET_KEY = 'ig_$s*hxy+1k5%1i=x@#$r5&9lzc34jg_2ld6=v(qn-1_nyxf5'
 
 ALLOWED_HOSTS = []
 
@@ -45,8 +48,9 @@ INSTALLED_APPS = [
     'allauth.account',   
     'allauth.socialaccount', 
 
-    'accounts.apps.AccountsConfig', 
+    'bootstrap4',
 
+    'accounts.apps.AccountsConfig', 
     'kanban' 
 ]
 
@@ -67,6 +71,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'accounts', 'templates'),
+            os.path.join(BASE_DIR, 'kanban', 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,6 +80,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'builtins':[ 
+                'bootstrap4.templatetags.bootstrap4',
             ],
         },
     },
@@ -132,3 +140,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# ログインのリダイレクトURL
+LOGIN_REDIRECT_URL = '/kanban/home'
+
+# ログアウトのリダイレクトURL
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'

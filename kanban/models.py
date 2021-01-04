@@ -6,7 +6,7 @@ import uuid as uuid_lib
 
 # Create your models here.
 class Task(models.Model):
-  task_id = models.IntegerField(default=uuid_lib.uuid4, primary_key=True, editable=False)
+  task_id = models.UUIDField(default=uuid_lib.uuid4, primary_key=True, editable=False)
   name = models.CharField(null=False, max_length=50)
   deadline = models.DateField()
   done = models.BooleanField(default=False)

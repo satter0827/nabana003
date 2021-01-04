@@ -1,0 +1,1 @@
+web: gunicorn nabana003.wsgi --log-file -

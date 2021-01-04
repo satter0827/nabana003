@@ -1,20 +1,36 @@
+{% extends "kanban/base.html" %}
+{% block title %}task_index{% endblock title %}
+{% block content %}
+
 <!DOCTYPE html>
 <html>
-<body>
-  <table border="1">
-    <tr>
-      <th>name</th>
-      <th>deadline</th>
-      <th>done</th>
-    </tr>
-    {% for task in object_list %}
-    <tr>
-      <td>{{ task.name }}</td>
-      <td>{{ task.deadline }}</td>
-      <td>{{ task.done }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-</body>
- 
+  <body>
+    <div class="container">
+      <table border="1">
+        <tr>
+          <th>name</th>
+          <th>deadline</th>
+          <th>done</th>
+          <th>created_at</th>
+          <th>updated_at</th>
+        </tr>
+        {% for task in object_list %}
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>{{ task.deadline }}</td>
+          <td>{{ task.done }}</td>
+          <td>{{ task.created_at }}</td>
+          <td>{{ task.updated_at }}</td>
+          <th><a href="{% url 'kanban:task_update' task.task_id %}" class="btn btn-outline-secondary btn-sm text-nowrap">更新</a></th>
+          <form action="{% url 'kanban:task_delete' task.task_id %}" method="POST">
+            {% csrf_token %}
+            <td><input type='submit' value='削除' class="btn btn-outline-danger btn-sm text-nowrap" onclick='return confirm("本当に削除しますか？");'></td>
+          </form>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
 </html>
+
+{% endblock %}
