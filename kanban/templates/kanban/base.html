@@ -19,15 +19,17 @@
       <div class="collapse navbar-collapse" id="navbarsExample03">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">アニメ</a>
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Todo</a>
             <div class="dropdown-menu" aria-labelledby="dropdown03">
-              <a class="dropdown-item" href="">一覧</a>
+              <a class="dropdown-item" href="{% url 'kanban:task_index' %}">一覧</a>
+              <a class="dropdown-item" href="{% url 'kanban:task_create' %}">新規登録</a>
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">評価</a>
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dairy</a>
             <div class="dropdown-menu" aria-labelledby="dropdown03">
-              <a class="dropdown-item" href="">一覧</a>
+              <a class="dropdown-item" href="{% url 'kanban:diary_index' %}">一覧</a>
+              <a class="dropdown-item" href="{% url 'kanban:diary_create' %}">新規登録</a>
             </div>
           </li>
         </ul>

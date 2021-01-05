@@ -8,5 +8,5 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name_plural = 'CustomUser'
 
-    id = models.UUIDField(default=uuid_lib.uuid4, primary_key=True, editable=False)
+    user_id = models.UUIDField(default=uuid_lib.uuid4, primary_key=True, editable=False)
     
